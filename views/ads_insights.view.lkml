@@ -320,7 +320,40 @@ view: ads_insights {
     drill_fields: [detail*]
   }
   measure: total_spend {
-
+    type: sum
+    sql:${spend} ;;
+  }
+  measure: total_reach{
+    type: sum
+    sql: ${reach} ;;
+  }
+  measure: total_unique_click {
+    type: sum
+    sql: ${unique_clicks} ;;
+  }
+  measure: total_impression {
+    type: sum
+    sql: ${impressions} ;;
+  }
+  measure: average_frequency {
+    type: average
+    sql: ${frequency} ;;
+  }
+  measure: average_unique_ctr {
+    type: average
+    sql: ${unique_ctr}} ;;
+  }
+  measure: average_cpp {
+    type: average
+    sql: ${cpp} ;;
+  }
+  measure: average_cpm {
+    type: average
+    sql: ${cpm} ;;
+  }
+  measure: average_cpc {
+    type: average
+    sql: ${cpc} ;;
   }
 
   # ----- Sets of fields for drilling ------
