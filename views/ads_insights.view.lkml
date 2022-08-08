@@ -319,6 +319,9 @@ view: ads_insights {
     type: count
     drill_fields: [detail*]
   }
+  measure: total_spend {
+
+  }
 
   # ----- Sets of fields for drilling ------
   set: detail {
