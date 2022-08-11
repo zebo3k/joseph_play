@@ -2,13 +2,18 @@ connection: "fivetran_shopify"
 include: "/views/*.view.lkml"
 include: "/**/*.view.lkml"
 
-explore: order {
-  join: products {
-    relationship: one_to_many
-    sql: ${order.id}=${products.id} ;;
-  }
-  join: customers {
+explore: order_line {
+  label: "ecommerce"
+  join: order {
+    sql_on: ${order_line.order_id}=${order.id} ;;
     relationship: many_to_one
-    sql: ${order.customer_id}=${customers.id} ;;
+  }
+  join: product {
+    sql_on: ${order_line.product_id}=${product.id} ;;
+    relationship: one_to_many
+  }
+  join: customer {
+    sql_on: ${order.customer_id}=${customer.id} ;;
+    relationship: many_to_one
   }
 }

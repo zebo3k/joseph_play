@@ -1,4 +1,4 @@
-view: products {
+view: product {
   dimension: id {
     type: number
     sql: ${TABLE}.id ;;

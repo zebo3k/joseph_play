@@ -1,7 +1,8 @@
-view: customers {
+view: customer {
   dimension: id {
     type: number
     sql: ${TABLE}.id ;;
+    primary_key: yes
   }
   dimension: _fivetran_deleted {
     type: yesno
@@ -119,25 +120,20 @@ view: customers {
 
   measure: count {
     type: count
-    drill_fields: [customers_details*]
-  }
-  measure: count_orders {
-    type: count
-    sql: ${orders_count} ;;
-    drill_fields: [customers_details*]
+    drill_fields: [customer_details*]
   }
   measure: average_spend {
     type: average
     sql: ${total_spent} ;;
-    drill_fields: [customers_details*]
+    drill_fields: [customer_details*]
   }
   measure: total_spend {
     type: sum
     sql: ${total_spent} ;;
-    drill_fields: [customers_details*]
+    drill_fields: [customer_details*]
   }
 
-  set: customers_details {
+  set: customer_details {
     fields: [
       accepts_marketing,
       total_spent,
