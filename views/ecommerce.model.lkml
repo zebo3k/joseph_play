@@ -3,7 +3,6 @@ include: "/views/*.view.lkml"
 include: "/**/*.view.lkml"
 
 explore: order_line {
-  label: "ecommerce"
   join: order {
     sql_on: ${order_line.order_id}=${order.id} ;;
     relationship: many_to_one
