@@ -195,14 +195,58 @@ view: order_line {
     type: count
     drill_fields: [order_line_details*]
   }
-  measure: total_price {
+  measure: total_revenue {
     type: sum
     sql: ${price} ;;
     drill_fields: [order_line_details*]
   }
+  measure: avg_price {
+    type: average
+    sql: ${price} ;;
+    value_format_name: usd
+    drill_fields: [order_line_details*]
+  }
+
+  measure: count_items {
+    type: count
+  }
+
+  measure: total_quantity_ordered {
+    type: sum
+    sql: ${quantity} ;;
+    drill_fields: [order_line_details*]
+  }
+
+  measure: total_fulfillable_quantity {
+    type: sum
+    sql: ${fulfillable_quantity} ;;
+    drill_fields: [order_line_details*]
+  }
+
+  measure: inventory_deficit {
+    type: number
+    sql: ${order_line.total_fulfillable_quantity}-${order_line.total_quantity_ordered} ;;
+    drill_fields: [order_line_details*]
+  }
+
+  measure: avg_items_per_order {
+    type:number
+    sql: ${count_items}/${order.count} ;;
+  }
+
+  measure: total_lifetime_revenue {
+    type: sum
+    sql: ${price} ;;
+    value_format_name: usd
+    drill_fields: [order_line_details*]
+  }
+
 
   set: order_line_details {
     fields: [
+      product.title,
+      order_line.title,
+      order_line.price,
       fulfillment_status,
       name,
       origin_location_city,
