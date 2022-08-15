@@ -21,6 +21,6 @@ explore: order_line {
   }
   join: customer_address {
     sql_on: ${customer.id}=${customer_address.customer_id} ;;
-    relationship: one_to_many
+    relationship: one_to_one
   }
 }

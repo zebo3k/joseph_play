@@ -37,7 +37,7 @@ view:customer_address {
     sql: ${TABLE}.company ;;
   }
   dimension: country {
-    map_layer_name: countries
+    type: string
     sql: ${TABLE}.country ;;
   }
   dimension: country_code {
