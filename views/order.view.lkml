@@ -139,6 +139,11 @@ view: order {
     sql: ${TABLE}.client_details_user_agent ;;
 
   }
+  dimension: customer_age {
+    type: number
+    sql: DATE_DIFF(${customer.created_at_date}, ${created_at_date}, DAY) ;;
+  }
+
   dimension_group: created_at {
     type: time
     timeframes: [
@@ -516,5 +521,4 @@ view: order {
       total_revenue
     ]
   }
-
 }

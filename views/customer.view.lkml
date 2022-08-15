@@ -47,7 +47,7 @@ view: customer {
   dimension: currency {
     type:string
     sql: ${TABLE}.currency ;;
-    hidden:  yes
+
   }
   dimension: email {
     type: string
@@ -102,6 +102,15 @@ view: customer {
     sql: ${TABLE}.total_spent ;;
     value_format_name: gbp_0
   }
+  dimension: new_vs_repeat {
+    type: string
+    sql: case
+         when ${orders_count} = 1 then 'new'
+         when ${orders_count} = 0 then 'new'
+         else 'repeat' end ;;
+    group_label: "Other"
+  }
+
   dimension_group: updated_at {
     type: time
     timeframes: [

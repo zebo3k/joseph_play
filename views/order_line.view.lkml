@@ -198,12 +198,13 @@ view: order_line {
   measure: total_revenue {
     type: sum
     sql: ${price} ;;
+    value_format_name: gbp
     drill_fields: [order_line_details*]
   }
   measure: avg_price {
     type: average
     sql: ${price} ;;
-    value_format_name: usd
+    value_format_name: gbp
     drill_fields: [order_line_details*]
   }
 
@@ -237,7 +238,7 @@ view: order_line {
   measure: total_lifetime_revenue {
     type: sum
     sql: ${price} ;;
-    value_format_name: usd
+    value_format_name: gbp
     drill_fields: [order_line_details*]
   }
 
