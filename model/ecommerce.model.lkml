@@ -2,7 +2,6 @@ connection: "fivetran_shopify"
 include: "/**/*.view.lkml"
 
 explore: order_line {
-  label: "Joseph_play_2_ecommerce"
   join: order {
     sql_on: ${order_line.order_id}=${order.id} ;;
     relationship: many_to_one
