@@ -8,6 +8,9 @@
         column: created_at_month { field: order.created_at_month }
         column: total_revenue { field: order.total_revenue }
         column: count { field: customer.count }
+        column: total_price {field:order.total_price}
+        column: order_number {field:order.order_number}
+        column: price {field:order_line.price}
         filters: {
           field: order.created_at_date
           value: "30 days"
@@ -20,13 +23,25 @@
       description: ""
       type: date_month
     }
-    dimension: total_revenue {
+    dimension: order_number {
       description: ""
-      value_format_name: gbp
       type: number
     }
-    dimension: count {
+    dimension: total_price{
       description: ""
       type: number
+    }
+    dimension: price {
+      description: ""
+      type: number
+    }
+    measure: total_revenue {
+      description: ""
+      value_format_name: gbp
+      type: sum
+    }
+    measure: count {
+      description: ""
+      type: count
     }
   }

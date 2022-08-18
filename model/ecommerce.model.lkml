@@ -120,4 +120,14 @@ explore: order_line {
     sql_on: ${order.created_at_month}=${total_customers_this_month.created_at_month} ;;
     relationship: many_to_one
   }
+  join: avg_order_value_over_time {
+    type: left_outer
+    sql_on: ${order.created_at_month}=${avg_order_value_over_time.created_at_month} ;;
+    relationship: many_to_one
+  }
+  join: repeat_customer_breakdown {
+    type: left_outer
+    sql_on: ${order.order_number}=${repeat_customer_breakdown.order_number}} ;;
+    relationship: many_to_one
+  }
 }

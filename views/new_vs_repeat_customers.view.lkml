@@ -6,7 +6,7 @@
     derived_table: {
       explore_source: order_line {
         column: new_vs_repeat { field: customer.new_vs_repeat }
-        column: count { field: customer.count }
+        column: count { field: order.count }
         filters: {
           field: order.created_at_date
           value: "30 days"
@@ -20,5 +20,6 @@
     dimension: count {
       description: ""
       type: number
+
     }
   }

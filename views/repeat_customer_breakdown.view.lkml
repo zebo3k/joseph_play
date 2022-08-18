@@ -7,6 +7,7 @@
       explore_source: order_line {
         column: orders_count { field: customer.orders_count }
         column: count { field: customer.count }
+        column: order_number {field:order.order_number}
         filters: {
           field: order.created_at_date
           value: "30 days"
@@ -20,6 +21,10 @@
     }
     dimension: orders_count {
       description: ""
+      type: number
+    }
+    dimension: order_number {
+      description: " "
       type: number
     }
     dimension: count {
