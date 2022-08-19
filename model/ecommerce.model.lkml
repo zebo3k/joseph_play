@@ -1,5 +1,7 @@
 connection: "fivetran_shopify"
 include: "/**/*.view.lkml"
+include:  "//fivetran_facebook/**/*.view.lkml"
+include: "/refinement.view.lkml"
 
 datagroup: default_data_group {
   interval_trigger: "1 hours"
@@ -130,4 +132,8 @@ explore: order_line {
     sql_on: ${order.order_number}=${repeat_customer_breakdown.order_number}} ;;
     relationship: many_to_one
   }
+}
+
+explore: account_history {
+
 }
